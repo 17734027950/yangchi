@@ -1,0 +1,32 @@
+{
+	"name": "17734027950/yangchi",
+	"description": "class",
+	"license": "Apache-2.0",
+	"authors": [
+	    {
+	    "name": "17734027950",
+	    "email": "17734027950@qq.com"
+	    }
+	],
+	"require": {
+        
+    },
+	"autoload": {
+	    "psr-4": {
+	        "Yang\\": "src/yangchi/"
+	    }
+	},
+    "config": {
+        "preferred-install": "dist",
+        "secure-http": false
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://packagist.phpcomposer.com"
+        },
+        {
+            "packagist": false
+        }
+    ]
+}
