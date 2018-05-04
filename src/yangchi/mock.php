@@ -63,14 +63,22 @@ class mock {
 
             $max = $max > strlen($value) ? strlen($value)-1 : $max;
 
-            return mt_rand($min, $max);
+            // echo $min.'-'.$max;
+
+            if($min>=$max){
+            	return mt_rand($max, $min);
+            }else{
+            	return mt_rand($min, $max);
+            }
+
+            // 
 
         }
 
         if(is_numeric($rule)){
 
             $number = '';
-
+            
             for ( $i = 0; $i < $rule; $i++ ){
                 $number .= $value[mt_rand(0, strlen($value) - 1)];
 
@@ -144,9 +152,9 @@ class mock {
         }
 
         if(false !== strpos($rule, '-')){
-
-            $integer = $this->number($rule);
-            $float   = $this->number($length);
+            
+            $integer = $this->number($rule,'');
+            $float   = $this->number($length,'');
 
             return $integer . '.' . $float;
 
@@ -161,18 +169,17 @@ class mock {
     public function boolean($rule)
     {
 
-        if(!isset($rule)){
-
-            $rule = $this->number('0-1');
+        if(isset($rule)){
+            $rule = $this->number(1,'0-1');
         }
 
-        if(1 === $rule){
+        if(1 == $rule){
 
             return 'true';
 
         }
 
-        if(0 === $rule){
+        if(0 == $rule){
 
             return 'false';
 
@@ -345,11 +352,11 @@ class mock {
 
         if($domain == '@qq.com'){
 
-            return $this->number('10000-1000000000') . $domain;
+            return $this->number('10000-1000000000','') . $domain;
 
         }
 
-        return $this->string(6) . $domain;
+        return $this->string(6,'') . $domain;
 
     }
 
